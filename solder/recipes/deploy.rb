@@ -55,8 +55,8 @@ node[:deploy].each do |app_name, deploy|
     end
 
     variables(
-      :repo_location => (node[:repo_location] rescue nil),
-      :mirror_url => (node[:mirror_url] rescue nil)
+      :repo_location => (node[:solder][:repo_location] rescue nil),
+      :mirror_url => (node[:solder][:mirror_url] rescue nil)
     )
 
    only_if do
