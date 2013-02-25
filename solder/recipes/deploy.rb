@@ -62,4 +62,13 @@ node[:deploy].each do |app_name, deploy|
      File.directory?("#{deploy[:deploy_to]}/current")
    end
   end
+
+  script "run_migrations" do
+    interpreter "bash"
+    user "root"
+    cwd "#{deploy[:deploy_to]}/current"
+    code <<-EOH
+    php artisan migrate
+    EOH
+  end
 end
