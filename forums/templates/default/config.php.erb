@@ -1,0 +1,18 @@
+<?php
+
+$config['db']['host'] = '<%= @host%>';
+$config['db']['port'] = '3306';
+$config['db']['username'] = '<%= @user%>';
+$config['db']['password'] = '<%= @password%>';
+$config['db']['dbname'] = '<%= @db%>';
+
+
+$config['superAdmins'] = '1,154,3,4,6';
+
+$config['cookie'] = array(
+	'prefix' => 'xf_',
+	'path' => '/',
+	'domain' => '.technicpack.net'
+);
+
+if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) { $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_CF_CONNECTING_IP']; }
