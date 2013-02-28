@@ -70,6 +70,7 @@ node[:deploy].each do |app_name, deploy|
       cwd "#{deploy[:deploy_to]}/current"
       code <<-EOH
       php artisan migrate
+      chmod -R 777 storage
       EOH
     end
   end
