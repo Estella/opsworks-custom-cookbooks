@@ -6,6 +6,8 @@ node[:deploy].each do |app_name, deploy|
       cwd "#{deploy[:deploy_to]}/current"
       code <<-EOH
       ln -s /vol/repo/forumdata/data/* data
+      ln -s /vol/repo/forumdata/styles/* styles
+      ln -s /vol/repo/forumdata/sitemap/* sitemap
       EOH
     end
 
