@@ -8,6 +8,7 @@ node[:deploy].each do |app_name, deploy|
       ln -sf /vol/repo/forumdata/data
       ln -sf /vol/repo/forumdata/styles
       ln -sf /vol/repo/forumdata/sitemap
+      chmod -R 775 internal_data
       EOH
     end
 
