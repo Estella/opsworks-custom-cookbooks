@@ -9,6 +9,16 @@ node[:deploy].each do |app_name, deploy|
       EOH
     end
 
+    script "link_launcher" do
+      interpreter "bash"
+      user "root"
+      cwd "#{deploy[:deploy_to]}/current/public"
+      code <<-EOH
+      rm -rf launcher
+      ln -sf /vol/repo/launcher
+      EOH
+    end
+
     template "#{deploy[:deploy_to]}/current/application/config/database.php" do
       source "database.php.erb"
       mode 0660
