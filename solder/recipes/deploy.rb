@@ -43,6 +43,22 @@ node[:deploy].each do |app_name, deploy|
      end
     end
 
+    template "#{deploy[:deploy_to]}/current/application/config/cache.php" do
+      source "cache.php.erb"
+      mode 0660
+      group deploy[:group]
+
+      if platform?("ubuntu")
+        owner "www-data"
+      elsif platform?("amazon")   
+        owner "apache"
+      end
+
+     only_if do
+       File.directory?("#{deploy[:deploy_to]}/current")
+     end
+    end
+
     template "#{deploy[:deploy_to]}/current/application/config/solder.php" do
       source "solder.php.erb"
       mode 0660
